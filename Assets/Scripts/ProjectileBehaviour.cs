@@ -28,4 +28,8 @@ public class ProjectileBehaviour : MonoBehaviour
         yield return new WaitForSeconds(aliveTime);
         Destroy(this.gameObject);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy") Destroy(this.gameObject);
+    }
 }
