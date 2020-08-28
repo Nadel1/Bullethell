@@ -30,8 +30,6 @@ public class EnemyBehaviour : MonoBehaviour
             rb.MovePosition(rb.position + forward * speed * Time.fixedDeltaTime);
 
         }
-        //transform.LookAt(target.position)
-        //transform.right = (target.position - transform.position);
         Quaternion rotation = Quaternion.LookRotation
             (target.position - transform.position, transform.TransformDirection(Vector3.up));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
