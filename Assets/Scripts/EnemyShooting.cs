@@ -5,20 +5,34 @@ using UnityEngine;
 public class EnemyShooting : MonoBehaviour
 {
     public GameObject projectile;
-    public Transform shootFrom;
 
+    [Tooltip("Shooting positions, easier to hard code rather than dynamically")]
+    public Transform shootFrom;
     public Transform shootFrom1;
     public Transform shootFrom2;
     public Transform shootFrom3;
     public Transform shootFrom4;
     private Transform[] shootingArray;
-    public float waitBetweenShots = 0.5f;
-    public float waitBetweenTwoShots = 0.1f;
-    public float waitBetweenTwoWaves = 1;
+
+    [SerializeField]
+    [Tooltip("Wait time between shots (single shot)")]
+    [Range(0, 1)]
+    private float waitBetweenShots = 0.5f;
+
+    [SerializeField]
+    [Tooltip("Wait time between two shots (single shot)")]
+    [Range(0, 1)]
+    private float waitBetweenTwoShots = 0.1f;
+    [SerializeField]
+    [Tooltip("Wait time between two waves shots (multiple shots)")]
+    [Range(0, 1)]
+    private float waitBetweenTwoWaves = 1;
+
+    //blocking variables for the waiting coroutines
     private bool alreadyWaiting = false;
     private bool waitingBetweenShots = false;
     [SerializeField]
-    [Tooltip("Shooting mode of the enemy")]
+    [Tooltip("Different shooting modes of the enemy")]
     [Range(0, 5)]
     private int shootingMode;
 
