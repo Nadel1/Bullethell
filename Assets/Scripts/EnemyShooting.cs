@@ -16,7 +16,7 @@ public class EnemyShooting : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Wait time between shots (single shot)")]
-    [Range(0, 1)]
+    [Range(0, 10)]
     private float waitBetweenShots = 0.5f;
 
     [SerializeField]

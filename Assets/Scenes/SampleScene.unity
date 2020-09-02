@@ -461,7 +461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -497,7 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1: {fileID: 7441809870792457663, guid: 29b53ca344fc9174ea3fbb6e4a034014, type: 3}
-  minSpawnRadius: 20
+  enemy2: {fileID: 3378563175672516984, guid: 4dc43cd18b4238346b13c4028dce080c, type: 3}
+  minSpawnRadius: 10
   waitBetweenSpawns: 2
 --- !u!4 &948080992
 Transform:
@@ -605,7 +606,7 @@ Transform:
   m_GameObject: {fileID: 978999945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 229558636}
   - {fileID: 401267286}
@@ -671,7 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381895ed1ec18d34190acff492a43d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 500
   damageTakenByProjectiles: 20
 --- !u!1 &1662477869
 GameObject:

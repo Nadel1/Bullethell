@@ -9,6 +9,10 @@ public class EnemySpawner : MonoBehaviour
     private GameObject enemy1;
 
     [SerializeField]
+    [Tooltip("Enemy of type 2")]
+    private GameObject enemy2;
+
+    [SerializeField]
     [Tooltip("Spawn free zone around the player")]
     [Range(5, 100)]
     private float minSpawnRadius=10;
