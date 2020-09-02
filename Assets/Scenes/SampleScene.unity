@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 978999951}
   - component: {fileID: 978999946}
   - component: {fileID: 978999952}
+  - component: {fileID: 978999953}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -676,6 +677,20 @@ MonoBehaviour:
     type: 3}
   shootFrom: {fileID: 401267286}
   waitBetweenShots: 0.25
+--- !u!114 &978999953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978999945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381895ed1ec18d34190acff492a43d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 300
+  damageTakenByProjectiles: 20
 --- !u!1 &1662477869
 GameObject:
   m_ObjectHideFlags: 0

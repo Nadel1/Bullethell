@@ -5,22 +5,22 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour
 {
     public float speed = 10;
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     public float aliveTime = 5;
     private Vector2 forward;
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = this.GetComponent<Rigidbody>();
         StartCoroutine(SelfDestruct());
-        forward = new Vector2(rb.transform.right.x, rb.transform.right.y);
+        forward = new Vector2(rb.transform.forward.x, rb.transform.forward.y);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        rb.MovePosition(rb.position + forward * speed * Time.fixedDeltaTime);
+       // rb.velocity = transform.forward * speed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + transform.forward* speed * Time.fixedDeltaTime);
     }
 
     IEnumerator SelfDestruct()

@@ -10,8 +10,13 @@ public class EnemyBehaviour : MonoBehaviour
     private float health = 100;
 
     [SerializeField]
+    [Tooltip("Damage taken by an incoming projectile")]
+    [Range(20, 100)]
+    private float damageTakenByProjectiles = 50;
+
+    [SerializeField]
     [Tooltip("2d speed of enemy")]
-    private Vector2 speed;
+    private float speed;
 
     [SerializeField]
     [Tooltip("Max distance an enemy can have from the player before it gets destroyed")]
@@ -19,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     private int maxDistance=750;
 
     //needed for calculations
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     private Transform target;
     private Vector2 targetVector;
     private Vector2 forward;
@@ -27,28 +32,41 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = this.GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
         
     }
+    private void Update()
+    {
+       
 
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
+        transform.LookAt(target);
         
-        if (Vector2.Distance(target.position, transform.position) > 3)
+        /*if (transform.rotation.z<0)
+        {
+            transform.rotation = new Quaternion(0, 0, transform.rotation.z+180, transform.rotation.w);
+        }*/
         {
             
             targetVector = target.position;
-            forward = new Vector2(rb.transform.right.x, rb.transform.right.y);
-            rb.MovePosition(rb.position + forward * speed * Time.fixedDeltaTime);
+            //forward = new Vector2(rb.transform.forward.x, rb.transform.forward.y);
+
+            rb.MovePosition(rb.position+speed*new Vector3(transform.forward.x , transform.forward.y, 0)*Time.fixedDeltaTime);
+            // rb.velocity = transform.forward * speed;
 
         }
+
+        
+        /*
         Quaternion rotation = Quaternion.LookRotation
             (target.position - transform.position, transform.TransformDirection(Vector3.up));
-        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-
-        if(Vector2.Distance(target.position, transform.position) > maxDistance)
+        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);*/
+        
+        if (Vector2.Distance(target.position, transform.position) > maxDistance)
         {
             Destroy(this.gameObject);
         }
@@ -58,7 +76,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             Debug.Log("hit");
-            health -= 50;
+            health -= damageTakenByProjectiles;
             if (health <= 0) Destroy(this.gameObject);
         }
     }
