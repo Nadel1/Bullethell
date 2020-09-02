@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Vector2 speed;
+    public float speed;
 
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     public bool controller = false;
     public bool accelerateAxis = false;
     private float contrXDefault=0;
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = this.GetComponent<Rigidbody>();
     }
     
     // Update is called once per frame
@@ -25,8 +25,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                Vector2 forward = new Vector2(rb.transform.right.x, rb.transform.right.y);
-                rb.MovePosition(rb.position + forward * speed * Time.fixedDeltaTime);
+                
+                rb.MovePosition(rb.position + speed * new Vector3(transform.forward.x, transform.forward.y, 0) * Time.fixedDeltaTime);
+                
             }
 
             Vector3 mouse = Input.mousePosition;
@@ -59,17 +60,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Input.GetButton("Gas"))
                 {
-                    rb.MovePosition(rb.position + forward * speed * Time.fixedDeltaTime);
+                    Debug.Log("move1");
+                    rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime);
                 }
             }
-            else
-            {
-                rb.MovePosition(rb.position + Input.GetAxis("Gas")* Input.GetAxis("Gas") * forward * speed * Time.fixedDeltaTime);
-            }
             
-            if (Input.GetButtonDown("Move")) { accelerate = !accelerate; }
+            
+            if (Input.GetButtonDown("Move")) {
+                Debug.Log("move3");
+                accelerate = !accelerate; }
             if (accelerate)
-                rb.MovePosition(rb.position + forward * speed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime);
         }
         
     }

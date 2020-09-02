@@ -98,7 +98,7 @@ public class EnemyShooting : MonoBehaviour
                 {
                     for (int i = 0; i < 5; i++)
                     {
-                        Instantiate(projectile, shootingArray[i].position, this.gameObject.transform.rotation);
+                        Instantiate(projectile, shootingArray[i].position, shootingArray[i].rotation);
                     }
                     StartCoroutine(WaitBetweenShots());
                 }
@@ -106,6 +106,7 @@ public class EnemyShooting : MonoBehaviour
         }
     }
 
+    //round shooting waves
     IEnumerator Waves()
     {
         alreadyWaiting = true;

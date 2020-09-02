@@ -8,6 +8,8 @@ public class ProjectileBehaviour : MonoBehaviour
     private Rigidbody rb;
     public float aliveTime = 5;
     private Vector2 forward;
+    //for the player projectile acceleration happens on the right vector
+    public bool player = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,10 @@ public class ProjectileBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       // rb.velocity = transform.forward * speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + transform.forward* speed * Time.fixedDeltaTime);
+        // rb.velocity = transform.forward * speed * Time.fixedDeltaTime;
+        if (!player) { rb.MovePosition(rb.position + speed * new Vector3(transform.forward.x, transform.forward.y, 0) * Time.fixedDeltaTime); }
+        else { rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime); }
+        
     }
 
     IEnumerator SelfDestruct()

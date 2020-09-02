@@ -45,11 +45,11 @@ public class EnemyBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         transform.LookAt(target);
-        
         /*if (transform.rotation.z<0)
         {
             transform.rotation = new Quaternion(0, 0, transform.rotation.z+180, transform.rotation.w);
         }*/
+        if(Vector3.Distance(target.position,this.transform.position)>3)
         {
             
             targetVector = target.position;

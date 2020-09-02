@@ -49,7 +49,8 @@ public class EnemySpawner : MonoBehaviour
         spawnDistance = Random.Range(minSpawnRadius, minSpawnRadius * 1.5f);
         Random.InitState((int)Time.realtimeSinceStartup * 100000);
         spawnDir = Random.Range(0, 360);
-        Vector2 spawnAt = new Vector2(Mathf.Sin(spawnDir), Mathf.Cos(spawnDir)) + new Vector2(transform.position.x, transform.position.y);
+        Vector2 spawn = new Vector2(Mathf.Sin(spawnDir), Mathf.Cos(spawnDir)) + new Vector2(transform.position.x, transform.position.y);
+        Vector3 spawnAt = new Vector3(spawn.x,spawn.y);
         Instantiate(enemy1,spawnDistance*spawnAt, Quaternion.identity);
         yield return new WaitForSeconds(waitBetweenSpawns);
         spawning = false;
