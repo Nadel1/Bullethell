@@ -60,14 +60,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Input.GetButton("Gas"))
                 {
-                    Debug.Log("move1");
                     rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime);
                 }
             }
             
             
             if (Input.GetButtonDown("Move")) {
-                Debug.Log("move3");
                 accelerate = !accelerate; }
             if (accelerate)
                 rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime);
