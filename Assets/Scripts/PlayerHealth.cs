@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             Debug.Log("hit");
+            Destroy(collision.gameObject);
             health -= damageTakenByProjectiles;
             if (health <= 0) Destroy(this.gameObject);
         }
