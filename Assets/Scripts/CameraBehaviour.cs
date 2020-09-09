@@ -54,6 +54,6 @@ public class CameraBehaviour : MonoBehaviour
 
     public void InduceStress(float stress)
     {
-        trauma = Mathf.Clamp01(trauma + stress);
+        trauma = Mathf.Clamp(trauma + stress,0,3);
     }
 }

@@ -1900,6 +1900,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   follow: {fileID: 978999949}
   moveSpeed: 1
+  frequency: 25
+  maximumTranslationShake: {x: 0.5, y: 0.5, z: 0.5}
+  maximumAngularShake: {x: 0.5, y: 0.5, z: 0.5}
+  recoverySpeed: 1.5
+  traumaExponent: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3798,6 +3803,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 500
   damageTakenByProjectiles: 20
+  firstColor: {fileID: 2100000, guid: d7e2c79f5c1a9804ba6899bea9746f37, type: 2}
+  secondColor: {fileID: 2100000, guid: c335895f00cc4074a9ea3664a075ad7a, type: 2}
+  blinks: 10
+  blinkTime: 1
 --- !u!4 &982205357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2720441354872653920, guid: ddca30eacbd0473428e3d362835788f3,
