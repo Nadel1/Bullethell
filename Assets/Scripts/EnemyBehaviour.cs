@@ -29,12 +29,13 @@ public class EnemyBehaviour : MonoBehaviour
     private Vector2 targetVector;
     private Vector2 forward;
 
+    private GameObject camera;
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
-        
+        camera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
     }
     private void Update()
     {
@@ -73,11 +74,21 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "Projectile"|| collision.gameObject.tag == "Player Projectile")
         {
             Debug.Log("hit");
             health -= damageTakenByProjectiles;
-            if (health <= 0) Destroy(this.gameObject);
+            if (health <= 0)
+            {
+                if(collision.gameObject.tag == "Player Projectile")
+                    camera.GetComponent<CameraBehaviour>().InduceStress(1);
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                if (collision.gameObject.tag == "Player Projectile")
+                    camera.GetComponent<CameraBehaviour>().InduceStress(1);
+            }
         }
     }
 
