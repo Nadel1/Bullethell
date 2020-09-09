@@ -66,9 +66,7 @@ public class PlayerMovement : MonoBehaviour
             }
             
             
-            if (Input.GetButtonDown("Move")) {
-                accelerate = !accelerate; }
-            if (accelerate)
+           
                 rb.MovePosition(rb.position + speed * new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.fixedDeltaTime);
             //rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime);
         }

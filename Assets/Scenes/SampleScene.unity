@@ -1928,11 +1928,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 1
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3788,7 +3788,7 @@ MonoBehaviour:
   projectile: {fileID: 2814655122221138932, guid: c5184db7ba3e03d4b904eedc7b846f9d,
     type: 3}
   shootFrom: {fileID: 401267286}
-  waitBetweenShots: 0.25
+  waitBetweenShots: 0.125
 --- !u!114 &978999953
 MonoBehaviour:
   m_ObjectHideFlags: 0
