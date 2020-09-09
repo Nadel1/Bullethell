@@ -42,15 +42,16 @@ public class PlayerMovement : MonoBehaviour
             Vector2 forward = new Vector2(rb.transform.right.x, rb.transform.right.y);
 
             //calculating rotation
-            if (Input.GetAxis("Vertical")!=0|| Input.GetAxis("Horizontal") != 0)
+            if (Input.GetAxis("VerticalY")>0.1f|| Input.GetAxis("VerticalY") <-0.1f || Input.GetAxis("HorizontalY") > 0.1f || Input.GetAxis("HorizontalY") < -0.1f)
             {
-                contrXDefault = Input.GetAxis("Vertical");
-                contrYDefault = Input.GetAxis("Horizontal");
-                angle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
+                contrXDefault = Input.GetAxis("VerticalY");
+                contrYDefault = Input.GetAxis("HorizontalY");
+                angle = Mathf.Atan2(Input.GetAxis("VerticalY"), Input.GetAxis("HorizontalY")) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
             else
             {
+                Debug.Log(contrXDefault);
                 angle = Mathf.Atan2(contrXDefault, contrYDefault) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
@@ -60,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Input.GetButton("Gas"))
                 {
-                    rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime);
+                    rb.MovePosition(rb.position + speed * new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.fixedDeltaTime);
                 }
             }
             
@@ -68,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Move")) {
                 accelerate = !accelerate; }
             if (accelerate)
-                rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + speed * new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.fixedDeltaTime);
+            //rb.MovePosition(rb.position + speed * new Vector3(transform.right.x, transform.right.y, 0) * Time.fixedDeltaTime);
         }
         
     }

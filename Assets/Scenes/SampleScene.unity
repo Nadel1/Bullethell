@@ -3537,8 +3537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy1: {fileID: 7441809870792457663, guid: 29b53ca344fc9174ea3fbb6e4a034014, type: 3}
   enemy2: {fileID: 3378563175672516984, guid: 4dc43cd18b4238346b13c4028dce080c, type: 3}
-  minSpawnRadius: 10
-  waitBetweenSpawns: 2
+  minSpawnRadius: 15
+  waitBetweenSpawns: 1.5
 --- !u!4 &948080992
 Transform:
   m_ObjectHideFlags: 0
