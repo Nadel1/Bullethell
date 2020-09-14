@@ -8,6 +8,8 @@ public class ShootingBehaviour : MonoBehaviour
     public Transform shootFrom;
     public float waitBetweenShots = 0.5f;
     private bool alreadyWaiting = false;
+
+
     // Update is called once per frame
     void Update()
     {

@@ -10,9 +10,12 @@ public class ProjectileBehaviour : MonoBehaviour
     private Vector2 forward;
     //for the player projectile acceleration happens on the right vector
     public bool player = false;
+
+    private GameObject GameController;
     // Start is called before the first frame update
     void Start()
     {
+        GameController = GameObject.FindGameObjectWithTag("GameController");
         rb = this.GetComponent<Rigidbody>();
         StartCoroutine(SelfDestruct());
         forward = new Vector2(rb.transform.forward.x, rb.transform.forward.y);
@@ -35,5 +38,6 @@ public class ProjectileBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Enemy"|| collision.gameObject.tag == "Wall") Destroy(this.gameObject);
+        if (player && collision.gameObject.tag == "Enemy") GameController.GetComponent<ScoreSystem>().EnemyShot();
     }
 }
