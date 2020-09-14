@@ -3755,7 +3755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  controller: 1
+  controller: 0
   accelerateAxis: 1
 --- !u!54 &978999951
 Rigidbody:

@@ -23,18 +23,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!controller)
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                
-                rb.MovePosition(rb.position + speed * new Vector3(transform.forward.x, transform.forward.y, 0) * Time.fixedDeltaTime);
-                
-            }
-
             Vector3 mouse = Input.mousePosition;
             Vector3 screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
             Vector2 offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
             float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            if (Input.GetKey(KeyCode.W))
+                rb.MovePosition(rb.position + speed * new Vector3(0, 1, 0) * Time.fixedDeltaTime);
+            if(Input.GetKey(KeyCode.D))
+                rb.MovePosition(rb.position + speed * new Vector3(1, 0, 0) * Time.fixedDeltaTime);
+            if(Input.GetKey(KeyCode.S))
+                rb.MovePosition(rb.position + speed * new Vector3(0, -1, 0) * Time.fixedDeltaTime);
+            if(Input.GetKey(KeyCode.A))
+                rb.MovePosition(rb.position + speed * new Vector3(-1, 0, 0) * Time.fixedDeltaTime);
+
         }
         else
         {
