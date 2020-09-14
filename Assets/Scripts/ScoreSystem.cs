@@ -35,4 +35,9 @@ public class ScoreSystem : MonoBehaviour
         yield return new WaitForSeconds(time);
         scoreMultiplier -= value;
     }
+
+    public float GetMultiplier()
+    {
+        return scoreMultiplier;
+    }
 }
