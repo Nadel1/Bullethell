@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float contrXDefault=0;
     private float contrYDefault=0;
     private bool accelerate = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +31,14 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
             if (Input.GetKey(KeyCode.W))
-                rb.MovePosition(rb.position + speed * new Vector3(0, 1, 0) * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + speed * new Vector3(0, 1, 0) * Time.deltaTime);
             if(Input.GetKey(KeyCode.D))
-                rb.MovePosition(rb.position + speed * new Vector3(1, 0, 0) * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + speed * new Vector3(1, 0, 0) * Time.deltaTime);
             if(Input.GetKey(KeyCode.S))
-                rb.MovePosition(rb.position + speed * new Vector3(0, -1, 0) * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + speed * new Vector3(0, -1, 0) * Time.deltaTime);
             if(Input.GetKey(KeyCode.A))
-                rb.MovePosition(rb.position + speed * new Vector3(-1, 0, 0) * Time.fixedDeltaTime);
-
+                rb.MovePosition(rb.position + speed * new Vector3(-1, 0, 0) * Time.deltaTime);
+            
         }
         else
         {

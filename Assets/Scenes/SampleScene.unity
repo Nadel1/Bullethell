@@ -3634,7 +3634,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948080990}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a225b5e65824e489697a8358d9b2af, type: 3}
   m_Name: 
@@ -3689,6 +3689,7 @@ MonoBehaviour:
   healthPickUp: {fileID: 0}
   minSpawnRadius: 10
   waitBetweenSpawns: 2
+  maxMultPickup: 10
 --- !u!4 &961797351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2720441354872653920, guid: ddca30eacbd0473428e3d362835788f3,
@@ -3902,7 +3903,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!114 &978999952
 MonoBehaviour:

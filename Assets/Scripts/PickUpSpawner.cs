@@ -74,4 +74,9 @@ public class PickUpSpawner : MonoBehaviour
         yield return new WaitForSeconds(waitBetweenSpawns);
         waiting = false;
     }
+
+    public void PickUpDeleted()
+    {
+        countMultiPickup--;
+    }
 }
