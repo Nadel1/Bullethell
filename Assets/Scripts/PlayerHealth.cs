@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     [Range(100, 500)]
     private float health = 300;
 
+    private float startHealth;
+
     [SerializeField]
     [Tooltip("Damage taken by an incoming projectile")]
     [Range(20, 100)]
@@ -33,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera");
+        startHealth = health;
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -57,5 +60,20 @@ public class PlayerHealth : MonoBehaviour
         }
         GetComponent<Renderer>().material = firstColor;
         blinks += 10;
+    }
+
+    public void AddHealth(float effect)
+    {
+        health += effect;
+    }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+
+    public float GetStartHeath()
+    {
+        return startHealth;
     }
 }

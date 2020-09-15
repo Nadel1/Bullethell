@@ -21,7 +21,7 @@ public class ScoreSystem : MonoBehaviour
     public void EnemyShot()
     {
         oldScore = float.Parse(score.GetComponent<TextMeshProUGUI>().text);
-        score.GetComponent<TextMeshProUGUI>().SetText((oldScore + scoreMultiplier * pointsPerShot).ToString());
+        score.GetComponent<TextMeshProUGUI>().SetText(((int)(oldScore + scoreMultiplier * pointsPerShot)).ToString());
     }
     
     public void AddMultiplier(float value, float time)

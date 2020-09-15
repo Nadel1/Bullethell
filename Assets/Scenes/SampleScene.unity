@@ -3634,7 +3634,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948080990}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a225b5e65824e489697a8358d9b2af, type: 3}
   m_Name: 
@@ -3686,10 +3686,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplierPickUp: {fileID: 3579333599626333242, guid: d9371e236def41a42b14537b46a22048,
     type: 3}
-  healthPickUp: {fileID: 0}
+  healthPickUp: {fileID: 2908198622740402515, guid: d97e7e0f03885e14bb4f33f37f800f4b,
+    type: 3}
   minSpawnRadius: 10
-  waitBetweenSpawns: 2
-  maxMultPickup: 10
+  waitBetweenSpawns: 8
+  maxMultPickup: 5
 --- !u!4 &961797351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2720441354872653920, guid: ddca30eacbd0473428e3d362835788f3,
@@ -5044,7 +5045,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 100, y: -85}
-  m_SizeDelta: {x: 100, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1531271381
 MonoBehaviour:
