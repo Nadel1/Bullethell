@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -31,11 +32,18 @@ public class PlayerHealth : MonoBehaviour
     private int blinkTime = 2;
 
     private GameObject camera;
+
+    public Image healthbar;
     // Start is called before the first frame update
     void Start()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         startHealth = health;
+    }
+
+    private void Update()
+    {
+        healthbar.GetComponent<Image>().fillAmount = health / startHealth;
     }
     private void OnTriggerEnter(Collider collision)
     {

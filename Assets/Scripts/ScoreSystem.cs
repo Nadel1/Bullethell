@@ -18,12 +18,19 @@ public class ScoreSystem : MonoBehaviour
     private float oldScore;
 
     private bool alreadyWaiting = false;
+
+    public TextMeshProUGUI multiplier;
     public void EnemyShot()
     {
         oldScore = float.Parse(score.GetComponent<TextMeshProUGUI>().text);
         score.GetComponent<TextMeshProUGUI>().SetText(((int)(oldScore + scoreMultiplier * pointsPerShot)).ToString());
     }
-    
+
+    private void Update()
+    {
+        multiplier.GetComponent<TextMeshProUGUI>().SetText((scoreMultiplier).ToString("F2") + "x");
+    }
+
     public void AddMultiplier(float value, float time)
     {
         scoreMultiplier += value;
