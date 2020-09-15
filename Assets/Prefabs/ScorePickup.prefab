@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2995050971354839270}
   - component: {fileID: 4795689185837084834}
   - component: {fileID: 4795689185837084831}
+  - component: {fileID: 1245579441900112747}
   m_Layer: 0
   m_Name: ScorePickup
   m_TagString: Untagged
@@ -106,3 +107,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783d97fbd0a7e59429ad17c56e6b507c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1245579441900112747
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579333599626333242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b307e6f109f8a2468d221fba6576f7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
