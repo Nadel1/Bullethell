@@ -57,6 +57,7 @@ public class LanguageManager : MonoBehaviour
 
             }
         }
+        UpdateTextElements();
     }
 
     public void UpdateTextElements()
