@@ -70,4 +70,15 @@ public class LanguageManager : MonoBehaviour
                 Textobject.GetComponent<Translations>().UpdateLanguage(current);
         }
     }
+
+    public string GetCurrent()
+    {
+        return current;
+    }
+
+    public void SetUp(string current)
+    {
+        this.current = current;
+        UpdateTextElements();
+    }
 }
