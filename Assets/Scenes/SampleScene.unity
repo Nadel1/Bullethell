@@ -3693,6 +3693,7 @@ GameObject:
   - component: {fileID: 948080991}
   - component: {fileID: 948080993}
   - component: {fileID: 948080994}
+  - component: {fileID: 948080995}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -3765,6 +3766,18 @@ MonoBehaviour:
   minSpawnRadius: 10
   waitBetweenSpawns: 8
   maxMultPickup: 5
+--- !u!114 &948080995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948080990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440500c803bd2e746bbbab967a3edbe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &961797351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2720441354872653920, guid: ddca30eacbd0473428e3d362835788f3,

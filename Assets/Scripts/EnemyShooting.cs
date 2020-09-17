@@ -149,4 +149,9 @@ public class EnemyShooting : MonoBehaviour
         alreadyWaiting = false;
         waitingBetweenShots = false;
     }
+
+    public int GetShootingMode()
+    {
+        return shootingMode;
+    }
 }
