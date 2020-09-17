@@ -3,28 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Linq;
 
 //manages the pause as well as saving
 public class GameManager : MonoBehaviour
 {
-    private List<GameObject> enemies = new List<GameObject>();
-    private List<GameObject> bullets = new List<GameObject>();
-
     private bool isPaused;
 
     [SerializeField]
     [Tooltip("Menu that will pop up when game is paused")]
     private GameObject menu;
 
-    public void AddEnemyToList(GameObject enemy)
-    {
-        enemies.Add(enemy);
-    }
 
-    public void AddBulletToList(GameObject bullet)
-    {
-        bullets.Add(bullet);
-    }
     public void SaveGame()
     {
         Save save = CreateSaveGameObject();
@@ -39,24 +29,42 @@ public class GameManager : MonoBehaviour
 
     private void ResetToDefault()
     {
-        enemies.Clear();
+        GameObject[] enbullets = GameObject.FindGameObjectsWithTag("Projectile");
+        GameObject[] playbullets = GameObject.FindGameObjectsWithTag("PlayerProjectile");
+
+        GameObject[] bullets = enbullets.Concat(playbullets).ToArray();
         foreach(GameObject bullet in bullets)
         {
-            Destroy(bullet.gameObject);
+            Destroy(bullet);
         }
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            enemy.SetActive(false);
+        }
+    
+    
+
     }
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
 
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject element in enemies)
         {
-            save.enemiesPositions.Add(element.transform.position);
+
+            save.enemies.Add(element);
             save.enemiesShootingType.Add(element.GetComponent<EnemyShooting>().GetShootingMode());
         }
 
+        save.playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        save.playerRot = GameObject.FindGameObjectWithTag("Player").transform.rotation;
+
         save.multiplier = GetComponent<ScoreSystem>().GetMultiplier();
         save.health = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerHealth>().GetHealth();
+        save.score = GetComponent<ScoreSystem>().GetScore();
         return save;
     }
     public void Pause()
@@ -96,6 +104,42 @@ public class GameManager : MonoBehaviour
             {
                 Pause();
             }
+        }
+    }
+
+    public void LoadGame()
+    {
+        if (File.Exists(Application.persistentDataPath + "/gamesave.save"))
+        {
+            //pauses the current game
+            Pause();
+
+            ResetToDefault();
+
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            Save save = (Save)bf.Deserialize(file);
+            file.Close();
+
+            foreach(GameObject enemy in save.enemies)
+            {
+                enemy.SetActive(true);
+            }
+            
+
+            //position and rotate the player accordingly
+            GameObject.FindGameObjectWithTag("Player").transform.position = save.playerPos;
+            GameObject.FindGameObjectWithTag("Player").transform.rotation = save.playerRot;
+
+            GetComponent<ScoreSystem>().SetMultiplier(save.multiplier);
+            GetComponent<ScoreSystem>().SetScore(save.score);
+            Debug.Log("Game Loaded");
+            //unpauses so that game can continue/begin
+            Unpause();
+        }
+        else
+        {
+            Debug.Log("No game saved!");
         }
     }
 }

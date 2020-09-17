@@ -20,10 +20,13 @@ public class ScoreSystem : MonoBehaviour
     private bool alreadyWaiting = false;
 
     public TextMeshProUGUI multiplier;
+    private int currentScore = 0;
     public void EnemyShot()
     {
         oldScore = float.Parse(score.GetComponent<TextMeshProUGUI>().text);
-        score.GetComponent<TextMeshProUGUI>().SetText(((int)(oldScore + scoreMultiplier * pointsPerShot)).ToString());
+        currentScore = (int)(oldScore + scoreMultiplier * pointsPerShot);
+        score.GetComponent<TextMeshProUGUI>().SetText((currentScore).ToString());
+        
     }
 
     private void Update()
@@ -46,5 +49,26 @@ public class ScoreSystem : MonoBehaviour
     public float GetMultiplier()
     {
         return scoreMultiplier;
+    }
+
+    public void SetMultiplier(float mult)
+    {
+        scoreMultiplier = mult;
+    }
+
+    public int GetScore()
+    {
+        return currentScore;
+    }
+
+    public void SetScore(int score)
+    {
+        currentScore = score;
+    }
+
+    public void ResetDefault()
+    {
+        scoreMultiplier = 1;
+        currentScore = 0;
     }
 }
