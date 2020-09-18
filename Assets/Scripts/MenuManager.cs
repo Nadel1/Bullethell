@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject LanguageMenu;
     public GameObject SelectMenu;
+
+    public string saveFile;
 
     public void Close()
     {
@@ -36,5 +39,12 @@ public class MenuManager : MonoBehaviour
     private void UpdateLanguages()
     {
         GetComponent<LanguageManager>().UpdateTextElements();
+    }
+
+    public void LoadGame(string save)
+    {
+        this.saveFile = save;
+        SceneManager.LoadScene("Gameplay");
+
     }
 }

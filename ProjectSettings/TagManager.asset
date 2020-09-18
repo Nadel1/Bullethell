@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Player Projectile
   - TextElements
+  - DDOL
   layers:
   - Default
   - TransparentFX

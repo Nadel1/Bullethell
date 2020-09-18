@@ -1394,9 +1394,10 @@ GameObject:
   - component: {fileID: 880615429}
   - component: {fileID: 880615428}
   - component: {fileID: 880615431}
+  - component: {fileID: 880615432}
   m_Layer: 0
-  m_Name: GameController
-  m_TagString: Untagged
+  m_Name: GameControllerDDOL
+  m_TagString: DDOL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1416,6 +1417,7 @@ MonoBehaviour:
   MainMenu: {fileID: 1270515843}
   LanguageMenu: {fileID: 1014158243}
   SelectMenu: {fileID: 584719234}
+  saveFile: 
 --- !u!114 &880615429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,6 +1456,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 219c209ca2d8b26428f15b9f71479139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &880615432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880615427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a560e2f09e5af24e96e3e0094f075f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &938767045
@@ -1875,7 +1889,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1048177485}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 880615428}
+        m_MethodName: LoadGame
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: save1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1048177485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3072,14 +3097,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 880615428}
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: LoadGame
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: save3
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &1582657053
@@ -3999,14 +4024,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 880615428}
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: LoadGame
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: save2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2037580697
