@@ -6,6 +6,7 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject LanguageMenu;
+    public GameObject SelectMenu;
 
     public void Close()
     {
@@ -18,10 +19,17 @@ public class MenuManager : MonoBehaviour
         LanguageMenu.SetActive(true);
         UpdateLanguages();
     }
+    public void OpenSelect()
+    {
+        MainMenu.SetActive(false);
+        SelectMenu.SetActive(true);
+        UpdateLanguages();
+    }
 
     public void ReturnToMain()
     {
         LanguageMenu.SetActive(false);
+        SelectMenu.SetActive(false);
         MainMenu.SetActive(true);
         UpdateLanguages();
     }
