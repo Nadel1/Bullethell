@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     private void ResetToDefault()
     {
         GameObject[] enbullets = GameObject.FindGameObjectsWithTag("Projectile");
-        GameObject[] playbullets = GameObject.FindGameObjectsWithTag("PlayerProjectile");
+        GameObject[] playbullets = GameObject.FindGameObjectsWithTag("Player Projectile");
 
         GameObject[] bullets = enbullets.Concat(playbullets).ToArray();
         foreach(GameObject bullet in bullets)
