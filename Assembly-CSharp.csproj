@@ -79,6 +79,8 @@
     <Compile Include="Assets\Scripts\Save.cs" />
     <Compile Include="Assets\Scripts\ScorePickupBehaviour.cs" />
     <Compile Include="Assets\Scripts\ScoreSystem.cs" />
+    <Compile Include="Assets\Scripts\SerializableQuaternion.cs" />
+    <Compile Include="Assets\Scripts\SerializableVector3.cs" />
     <Compile Include="Assets\Scripts\ShootingBehaviour.cs" />
     <Compile Include="Assets\Scripts\Translations.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

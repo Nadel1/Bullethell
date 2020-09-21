@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
 public class Save
 {
-    public List<GameObject> enemies = new List<GameObject>();
+    public List<SerializableVector3> enemiesPos = new List<SerializableVector3>();
+    public List<SerializableQuaternion> enemiesRot = new List<SerializableQuaternion>();
     public List<int> enemiesShootingType = new List<int>();
-    public Vector3 playerPos;
-    public Quaternion playerRot;
+    public SerializableVector3 playerPos;
+    public SerializableQuaternion playerRot;
 
     public float multiplier=1;
     public float health = 100;

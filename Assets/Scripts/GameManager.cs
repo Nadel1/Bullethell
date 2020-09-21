@@ -14,12 +14,24 @@ public class GameManager : MonoBehaviour
     [Tooltip("Menu that will pop up when game is paused")]
     private GameObject menu;
 
+    private GameObject DDOL;
+    private string savepath;
+
+    public GameObject enemy;
+    private void Start()
+    {
+        menu.SetActive(false);
+
+        DDOL = GameObject.FindGameObjectWithTag("DDOL");
+        savepath = DDOL.GetComponent<MenuManager>().saveFile;
+        LoadGame();
+    }
 
     public void SaveGame()
     {
         Save save = CreateSaveGameObject();
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        FileStream file = File.Create(Application.persistentDataPath + savepath);
         bf.Serialize(file, save);
         file.Close();
 
@@ -55,7 +67,8 @@ public class GameManager : MonoBehaviour
         foreach(GameObject element in enemies)
         {
 
-            save.enemies.Add(element);
+            save.enemiesPos.Add(element.transform.position);
+            save.enemiesRot.Add(element.transform.rotation);
             save.enemiesShootingType.Add(element.GetComponent<EnemyShooting>().GetShootingMode());
         }
 
@@ -88,10 +101,7 @@ public class GameManager : MonoBehaviour
         return isPaused;
     }
 
-    private void Start()
-    {
-        menu.SetActive(false);
-    }
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -109,7 +119,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGame()
     {
-        if (File.Exists(Application.persistentDataPath + "/gamesave.save"))
+        if (File.Exists(Application.persistentDataPath + savepath))
         {
             //pauses the current game
             Pause();
@@ -117,15 +127,14 @@ public class GameManager : MonoBehaviour
             ResetToDefault();
 
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + savepath, FileMode.Open);
             Save save = (Save)bf.Deserialize(file);
             file.Close();
 
-            foreach(GameObject enemy in save.enemies)
+            for(int i=0; i < save.enemiesPos.Count ; i++)
             {
-                enemy.SetActive(true);
+                Instantiate(enemy, save.enemiesPos[i], save.enemiesRot[i]);
             }
-            
 
             //position and rotate the player accordingly
             GameObject.FindGameObjectWithTag("Player").transform.position = save.playerPos;
