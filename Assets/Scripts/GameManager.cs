@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         menu.SetActive(true);
-        Cursor.visible = true;
+        //Cursor.visible = true;
         Time.timeScale = 0;
         isPaused = true;
     }
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
     public void Unpause()
     {
         menu.SetActive(false);
-        Cursor.visible = false;
+        //Cursor.visible = false;
         Time.timeScale = 1;
         isPaused = false;
     }

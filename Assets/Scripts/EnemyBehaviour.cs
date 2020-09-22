@@ -30,6 +30,8 @@ public class EnemyBehaviour : MonoBehaviour
     private Vector2 forward;
 
     private GameObject camera;
+
+    private bool moving = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,11 +48,15 @@ public class EnemyBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         transform.LookAt(target);
+        if (!moving)
+        {
+            StartCoroutine(Movement());
+        }
         /*if (transform.rotation.z<0)
         {
             transform.rotation = new Quaternion(0, 0, transform.rotation.z+180, transform.rotation.w);
         }*/
-        if(Vector3.Distance(target.position,this.transform.position)>3)
+        /*if(Vector3.Distance(target.position,this.transform.position)>3)
         {
             
             targetVector = target.position;
@@ -67,11 +73,26 @@ public class EnemyBehaviour : MonoBehaviour
             (target.position - transform.position, transform.TransformDirection(Vector3.up));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);*/
         
-        if (Vector2.Distance(target.position, transform.position) > maxDistance)
+        if (Vector3.Distance(target.position, transform.position) > maxDistance)
         {
             Destroy(this.gameObject);
         }
     }
+
+    IEnumerator Movement()
+    {
+        moving = true;
+        transform.LookAt(target);
+        Vector3 destination = transform.forward * Vector3.Distance(target.position, transform.position) * 2;
+        while (Vector3.Distance(destination, transform.position) > 2)
+        {
+            rb.MovePosition(rb.position + speed * new Vector3(transform.forward.x, transform.forward.y, 0) * Time.fixedDeltaTime);
+
+        }
+        yield return new WaitForSeconds(2);
+        moving = false;
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Projectile"|| collision.gameObject.tag == "Player Projectile")
