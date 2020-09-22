@@ -20,7 +20,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Max distance an enemy can have from the player before it gets destroyed")]
-    [Range(700, 10000)]
+    [Range(0, 10000)]
     private int maxDistance=750;
 
     //needed for calculations

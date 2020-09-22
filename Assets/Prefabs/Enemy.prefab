@@ -272,7 +272,7 @@ Transform:
   m_GameObject: {fileID: 7441809870792457663}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 7441809870741812201}
   - {fileID: 7441809871147537716}
@@ -344,8 +344,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damageTakenByProjectiles: 50
-  speed: 2
-  maxDistance: 750
+  speed: 6
+  maxDistance: 150
 --- !u!114 &7441809870792457656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
   shootFrom2: {fileID: 7441809870928511733}
   shootFrom3: {fileID: 7441809871406026317}
   shootFrom4: {fileID: 7441809871792223784}
-  waitBetweenShots: 2
+  waitBetweenShots: 4
   waitBetweenTwoShots: 0.1
   waitBetweenTwoWaves: 1
   shootingMode: 1
