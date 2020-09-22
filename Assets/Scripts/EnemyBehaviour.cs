@@ -32,31 +32,34 @@ public class EnemyBehaviour : MonoBehaviour
     private GameObject camera;
 
     private bool moving = false;
+    private Vector3 destination;
+
+    private Vector3 moveTo;
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
         camera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
+        destination = transform.position;
+        moveTo = destination.normalized;
     }
-    private void Update()
-    {
-       
 
-    }
     // Update is called once per frame
     void FixedUpdate()
     {
         transform.LookAt(target);
-        if (!moving)
+
+        if (Vector3.Distance(destination, transform.position) < 2)
         {
-            StartCoroutine(Movement());
+            destination = transform.forward * Vector3.Distance(target.position, transform.position) * 2;
+            moveTo = destination.normalized;
         }
-        /*if (transform.rotation.z<0)
-        {
-            transform.rotation = new Quaternion(0, 0, transform.rotation.z+180, transform.rotation.w);
-        }*/
-        /*if(Vector3.Distance(target.position,this.transform.position)>3)
+
+        rb.MovePosition(rb.position + speed * new Vector3(moveTo.x, moveTo.y, 0) * Time.fixedDeltaTime);
+        
+
+        /*if (Vector3.Distance(target.position,this.transform.position)>3)
         {
             
             targetVector = target.position;
@@ -65,14 +68,11 @@ public class EnemyBehaviour : MonoBehaviour
             rb.MovePosition(rb.position+speed*new Vector3(transform.forward.x , transform.forward.y, 0)*Time.fixedDeltaTime);
             // rb.velocity = transform.forward * speed;
 
-        }
+        }*/
+
 
         
-        /*
-        Quaternion rotation = Quaternion.LookRotation
-            (target.position - transform.position, transform.TransformDirection(Vector3.up));
-        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);*/
-        
+
         if (Vector3.Distance(target.position, transform.position) > maxDistance)
         {
             Destroy(this.gameObject);
@@ -82,13 +82,7 @@ public class EnemyBehaviour : MonoBehaviour
     IEnumerator Movement()
     {
         moving = true;
-        transform.LookAt(target);
-        Vector3 destination = transform.forward * Vector3.Distance(target.position, transform.position) * 2;
-        while (Vector3.Distance(destination, transform.position) > 2)
-        {
-            rb.MovePosition(rb.position + speed * new Vector3(transform.forward.x, transform.forward.y, 0) * Time.fixedDeltaTime);
-
-        }
+        
         yield return new WaitForSeconds(2);
         moving = false;
     }

@@ -131,11 +131,11 @@ public class GameManager : MonoBehaviour
             Save save = (Save)bf.Deserialize(file);
             file.Close();
 
-            for(int i=0; i < save.enemiesPos.Count ; i++)
+           /* for(int i=0; i < save.enemiesPos.Count ; i++)
             {
                 Instantiate(enemy, save.enemiesPos[i], save.enemiesRot[i]);
             }
-
+            */
             //position and rotate the player accordingly
             GameObject.FindGameObjectWithTag("Player").transform.position = save.playerPos;
             GameObject.FindGameObjectWithTag("Player").transform.rotation = save.playerRot;
