@@ -32,6 +32,7 @@ public class ScoreSystem : MonoBehaviour
     private void Update()
     {
         multiplier.GetComponent<TextMeshProUGUI>().SetText((scoreMultiplier).ToString("F2") + "x");
+        score.GetComponent<TextMeshProUGUI>().SetText((currentScore).ToString());
     }
 
     public void AddMultiplier(float value, float time)
@@ -64,6 +65,7 @@ public class ScoreSystem : MonoBehaviour
     public void SetScore(int score)
     {
         currentScore = score;
+
     }
 
     public void ResetDefault()
