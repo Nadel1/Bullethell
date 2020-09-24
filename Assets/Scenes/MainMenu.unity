@@ -1447,6 +1447,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eng: 1
   ger: 0
+  select1: {fileID: 1334407935}
+  save1: save1
+  select2: {fileID: 744084637}
+  save2: save2
+  select3: {fileID: 1357575028}
+  save3: save3
 --- !u!4 &880615430
 Transform:
   m_ObjectHideFlags: 0

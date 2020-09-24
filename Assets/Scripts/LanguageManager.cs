@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Linq;
 
 public class LanguageManager : MonoBehaviour
 {
@@ -13,13 +16,28 @@ public class LanguageManager : MonoBehaviour
     // position in the list which is the current language
     private string current;
 
+    public GameObject select1;
+    public string save1;
+    public GameObject select2;
+    public string save2;
+    public GameObject select3;
+    public string save3;
+
+    private List<string> saveSlots = new List<string>();
+    private List<GameObject> saveButtons = new List<GameObject>();
     public void Start()
     {
         languages.Add("eng", 1);
         languages.Add("ger", 0);
         current = "eng";
 
-        
+        saveSlots.Add(save1);
+        saveSlots.Add(save2);
+        saveSlots.Add(save3);
+
+        saveButtons.Add(select1);
+        saveButtons.Add(select2);
+        saveButtons.Add(select3);
         UpdateTextElements();
     }
 
@@ -69,8 +87,15 @@ public class LanguageManager : MonoBehaviour
             
                 Textobject.GetComponent<Translations>().UpdateLanguage(current);
         }
+        for(int i=0; i<saveButtons.Count;i++)
+        {
+            if (File.Exists(Application.persistentDataPath + saveSlots[i]))
+            {
+                saveButtons[i].GetComponent<SecondaryTranslation>().UpdateLanguage(current);
+            }
+        }
     }
-
+    
     public string GetCurrent()
     {
         return current;
